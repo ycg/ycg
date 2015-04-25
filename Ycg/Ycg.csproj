@@ -5,13 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>96dc53c4-2a9f-4432-a5e3-1a6d63519664</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{8532F5F5-C747-4370-855B-10E347B03631}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ycg</RootNamespace>
     <AssemblyName>Ycg</AssemblyName>
-    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -32,14 +33,68 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>DLL\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>DLL\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Data\BulkCopyBase.cs" />
+    <Compile Include="Data\BulkCopyColumnMapping.cs" />
+    <Compile Include="Data\Configuration\DataBaseConfigurationInfo.cs" />
+    <Compile Include="Data\Configuration\DataBaseConfigurationSection.cs" />
+    <Compile Include="Data\Configuration\DataBaseConnectionStringConfigurationElement.cs" />
+    <Compile Include="Data\Configuration\DataBaseDefaultConfiguration.cs" />
+    <Compile Include="Data\DataBase.cs" />
+    <Compile Include="Data\DataBaseContext.cs" />
+    <Compile Include="Data\DataBaseFactory.cs" />
+    <Compile Include="Data\DataBaseManager.cs" />
+    <Compile Include="Data\IDBHelper.cs" />
+    <Compile Include="Data\MySQL\MySQLBulkCopy.cs" />
+    <Compile Include="Data\MySQL\MySQLHelper.cs" />
+    <Compile Include="Data\OLEDB\OLEDBHelper.cs" />
+    <Compile Include="Data\Oracle\OracleHelper.cs" />
+    <Compile Include="Data\ParameterCache.cs" />
+    <Compile Include="Data\ParameterCacheMechanism.cs" />
+    <Compile Include="Data\ParameterMappingInfo.cs" />
+    <Compile Include="Data\SQLite\SQLiteHelper.cs" />
+    <Compile Include="Data\SQLServer\SQLServerBulkCopy.cs" />
+    <Compile Include="Data\SQLServer\SQLServerBulkCopyHelper.cs" />
+    <Compile Include="Data\SQLServer\SQLServerHelper.cs" />
+    <Compile Include="Hook\CustomKeyBoard.cs" />
+    <Compile Include="Hook\CustomKeyEventArgs.cs" />
+    <Compile Include="Hook\CustomKeyEventHandler.cs" />
+    <Compile Include="Hook\HookAPI.cs" />
+    <Compile Include="Hook\HookManager.cs" />
+    <Compile Include="Hook\HookProcCallBack.cs" />
+    <Compile Include="Hook\HookType.cs" />
+    <Compile Include="Hook\InstallType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\RMBHelper.cs" />
+    <Compile Include="Util\ObjectHelper.cs" />
+    <Compile Include="Util\CompressHelper.cs" />
+    <Compile Include="Util\ConfigurationHelper.cs" />
+    <Compile Include="Util\ScreenHelper.cs" />
+    <Compile Include="Windows\WindowsAPI.cs" />
+    <Compile Include="Windows\WindowsAPIHelper.cs" />
+    <Compile Include="Windows\WindowsConst.cs" />
+    <Compile Include="Windows\WindowsMessage.cs" />
+    <Compile Include="Windows\WindowsStruct.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
