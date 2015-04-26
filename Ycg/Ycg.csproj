@@ -37,6 +37,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="fastJSON">
+      <HintPath>DLL\fastJSON.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>DLL\MySql.Data.dll</HintPath>
     </Reference>
@@ -51,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crypto\DESCryptoHelper.cs" />
     <Compile Include="Data\BulkCopyBase.cs" />
     <Compile Include="Data\BulkCopyColumnMapping.cs" />
     <Compile Include="Data\Configuration\DataBaseConfigurationInfo.cs" />
@@ -73,6 +77,12 @@
     <Compile Include="Data\SQLServer\SQLServerBulkCopy.cs" />
     <Compile Include="Data\SQLServer\SQLServerBulkCopyHelper.cs" />
     <Compile Include="Data\SQLServer\SQLServerHelper.cs" />
+    <Compile Include="Extension\DataReaderExtension.cs" />
+    <Compile Include="Extension\DataRowExtension.cs" />
+    <Compile Include="Extension\DataTableExtension.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Extension\ValueTypeExtension.cs" />
     <Compile Include="Hook\CustomKeyBoard.cs" />
     <Compile Include="Hook\CustomKeyEventArgs.cs" />
     <Compile Include="Hook\CustomKeyEventHandler.cs" />
@@ -82,6 +92,11 @@
     <Compile Include="Hook\HookType.cs" />
     <Compile Include="Hook\InstallType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\BinarySerializer.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
+    <Compile Include="Serialization\XMLSerializer.cs" />
+    <Compile Include="Util\FileHelper.cs" />
     <Compile Include="Util\RMBHelper.cs" />
     <Compile Include="Util\ObjectHelper.cs" />
     <Compile Include="Util\CompressHelper.cs" />
@@ -93,9 +108,14 @@
     <Compile Include="Windows\WindowsMessage.cs" />
     <Compile Include="Windows\WindowsStruct.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Java\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log\Remark.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Configuration;
 using System.Reflection;
 
 namespace Ycg.Util
@@ -8,6 +9,11 @@ namespace Ycg.Util
         public static bool IsNull(this object obj)
         {
             return (obj == null || obj == DBNull.Value);
+        }
+
+        public static bool IsNotNull(this object obj)
+        {
+            return (obj != null && obj != DBNull.Value);
         }
 
         public static T CreateInstance<T>(string fullName)
