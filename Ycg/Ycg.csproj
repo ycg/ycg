@@ -97,6 +97,7 @@
     <Compile Include="Serialization\JsonSerializer.cs" />
     <Compile Include="Serialization\XMLSerializer.cs" />
     <Compile Include="Util\FileHelper.cs" />
+    <Compile Include="Util\HttpHelper.cs" />
     <Compile Include="Util\RMBHelper.cs" />
     <Compile Include="Util\ObjectHelper.cs" />
     <Compile Include="Util\CompressHelper.cs" />

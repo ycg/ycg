@@ -1,0 +1,10 @@
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\Ycg.Test.dll
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\Ycg.Test.pdb
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\fastJSON.dll
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\MySql.Data.dll
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\System.Data.SQLite.dll
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\Ycg.dll
+E:\ycg tool\ycg\Ycg.Test\bin\Debug\Ycg.pdb
+E:\ycg tool\ycg\Ycg.Test\obj\Debug\Ycg.Test.csprojResolveAssemblyReference.cache
+E:\ycg tool\ycg\Ycg.Test\obj\Debug\Ycg.Test.dll
+E:\ycg tool\ycg\Ycg.Test\obj\Debug\Ycg.Test.pdb
