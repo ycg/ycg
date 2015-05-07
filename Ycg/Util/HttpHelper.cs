@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using Ycg.Extension;
 
 namespace Ycg.Util
 {
@@ -30,12 +29,12 @@ namespace Ycg.Util
             }
         }
 
-        public static string Post(string url, string data)
+        public static string Post(string url, string data, int timeoutSecond = 3)
         {
             #region Create http request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.Timeout = 1000 * 3;
+            request.Timeout = 1000 * timeoutSecond;
             request.ContentType = "application/x-www-form-urlencoded;charset=utf-8";
             #endregion
 

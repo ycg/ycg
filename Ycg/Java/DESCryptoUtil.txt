@@ -1,0 +1,71 @@
+﻿package com.cocoon.upbaa.common;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.IvParameterSpec;
+
+public class DESCryptoUtil {
+
+	public static byte[] KeyJava = { 65, 66, 43, 61, 33, 38, 36, 35 };
+
+	public static void main(String[] args) throws Exception {
+		try {
+			System.out.println(encrypt("p8LPzUHEavE="));
+			//System.out.println(decrypt("sYvBRuxZNzaSTbYCsU7SOQzag3FPAAVIJ/fpKVuDXFQ9WSdFl35zQgyW7eBw7 w28numbXmjqo95g0F4VZZ4Ge0j1QGtc6l7PBcSUo6g4FmZfN/b8JjP0pEhrqv5wUMWVlLHwZ26iLc/9kOdl37fsyRHSN ORL9fBfr3yCUJtzReuLry99Hm26U1N2vQdcc5 ZlHSgUo8MWCIeEhp3Jfhp SrjmxN5X1oFF8DJ8PGnTFAxu8TJlqQXzPp2iFgyZBmmBVdU4hiWuHV7Pjtc4ppV8dFC7zIOkrcGrE BGHkXPQjYPUwInsmqgwKAVZ 9k1PSrDTOmPyw4QGIGOygG6jWz5POibCNHBDYnZ0iYJFOmBXUfavBNkMhFF8UusdxTdTeT7GunHu/ETPVtYgOd5DNuWgNWPr0czxz4MWBN8nC9qUVpnZkSj0gl1TtPMY9qAaD9duHYSVi9OI9yLt/9IZaXeVcz16hA9jpIVY1gO0C4v ZqjZVDlOTtw9M4xVdlrfeSTRtedXQ5RBIdwI4 XOj4PCH8ciXQe0NuApda9mt5VVgLkLLzGyCroP bscBtTrPxg8ies34WsjFPcKdGP8puhuGgXqzzh4R/vMpPnohXHD96oFx73bHe1R53SajGvzNa 6J3GWeQGRD0RKr8Bxllmrm1LXCTyoRjGbeNKyamrdLltfG3n4omENl8PMM0 9JA/fuEJka48tV7ADxY814Jskrvo8xkJvMxN8NRolC bFx4CKT0XIcwLwVtmMii1veRAhITbGRgAuwN1dJZhSL98QUyBiVVcWRaIHnGe2lIwj9JllcPtO7xlFE6EypSrDygfwNNSKLc="));
+			System.out.println(decrypt("sYvBRuxZNzaSTbYCsU7SOQDcEe/kwSLSIldagizEIejcZn3w9XtU+c3HYXb9a6Ka4ltTrGwU82w2/SITdruL/Qw6/fsiiXjuvAMOpdJ49pySdCLuMXqDrO7tuoA1nsP7laHtfOhEvg1DrfV+5UwqXWaixR8q2d9ouG6AiPJg5iIzMA/ndVdON7TlMnLhoPtPzfJjLy1s+Q1/i7nZ9coDOW/le3vPZE3wAbicMJv7VfGm3MB4ymQ7ZFCJqhcnvjUMCWxKVJVzMCubTO61RrDhrUAj1O2GAXoJEP+GiN+HX8sJA4q7pFCv3JoTTXbQK5B5jloM1ru3khuSiQVcyq10HgK/pv24qNDJWtKVc3VIxNag05gynkcdC31bA9K8xnmQ+KRpAe8roe9lpgQ/tHyQ+JxXA411D2fpeITvf5LdUfsHBLyhZheUVBsyjKnfnL/mVpAmzMv9toV7Nk9VbsCvOPxr4tlPpE4M3fxN+lBgxRJokZeJj6x1yUjAmHMryKChxpaOy5WUXEPUq5X9H3kgLwwN3mSffKM4RhQVCeylE2mqhTalWuu5eGczqd3zMtV6ELv+xXsQCjomzm3eRvyPWWM6ex37sVIrcoNy55fAa0ZRX4Wb8egCk44iuHJDGm3yKCxJV4xOkHMnSzVHlnFDkPP3mEPuEjgfK/vTBXYpb6IlAG5je9w2sogns7zwgnF8V5A422ePOhrDbUKcUjRxIFkvUg1plu4mgrahOTdtoZaHPf/WeyBrVQFxY1ZxqZJYyVctie+VvB8="));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e);
+		}
+	}
+
+	/**
+	 * DES 加密
+	 * @param message 加密内容
+	 * @return
+	 * @throws Exception
+	 */
+	public static String encrypt(String message) throws Exception {
+		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+
+		DESKeySpec desKeySpec = new DESKeySpec(KeyJava);
+
+		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+
+		SecretKey secretKey = keyFactory.generateSecret(desKeySpec);
+
+		IvParameterSpec iv = new IvParameterSpec(KeyJava);
+
+		cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
+
+		// 返回的字符串进行base64转码
+		return new sun.misc.BASE64Encoder().encode(cipher.doFinal(message.getBytes("UTF-8")));
+	}
+
+	/**
+	 * DES 解密
+	 * @param message 解密内容
+	 * @return
+	 * @throws Exception
+	 */
+	public static String decrypt(String message) throws Exception {		
+		// 进行Base64进行转码
+		byte[] byteData = new sun.misc.BASE64Decoder().decodeBuffer(message);
+
+		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+
+		DESKeySpec desKeySpec = new DESKeySpec(KeyJava);
+		// 创建DES加密工厂
+		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+
+		SecretKey secretKey = keyFactory.generateSecret(desKeySpec);
+		// 设置偏移量
+		IvParameterSpec iv = new IvParameterSpec(KeyJava);
+		// 进行加密
+		cipher.init(Cipher.DECRYPT_MODE, secretKey, iv);
+		// 进行填充数据
+		return new String(cipher.doFinal(byteData));
+	}
+}

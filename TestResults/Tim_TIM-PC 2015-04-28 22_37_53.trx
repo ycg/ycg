@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="692d1c1e-4a75-4c8b-a731-d5bacce2a390" name="Tim@TIM-PC 2015-04-28 22:37:53" runUser="Tim-PC\Tim" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3b6341aa-b671-4375-a931-31959ae31bbf">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Tim_TIM-PC 2015-04-28 22_37_53">
+      <DeploymentItem filename="E:\ycg tool\ycg\Ycg\DLL\System.Data.SQLite.dll" />
+      <DeploymentItem filename="E:\ycg tool\ycg\Ycg\DLL\fastJSON.dll" />
+      <DeploymentItem filename="E:\ycg tool\ycg\Ycg\bin\Debug\Ycg.dll" />
+      <DeploymentItem filename="E:\ycg tool\ycg\Ycg\DLL\MySql.Data.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2015-04-28T22:37:53.5440523+08:00" queuing="2015-04-28T22:37:54.2770942+08:00" start="2015-04-28T22:37:54.3310973+08:00" finish="2015-04-29T00:38:38.5352678+08:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="TIM-PC" outcome="Error" timestamp="2015-04-29T00:38:38.5196677+08:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DownloadFileTest" storage="e:\ycg tool\ycg\ycg.test\bin\debug\ycg.test.dll" id="670b6a3c-16ba-9c67-b09b-8db4a65bf4f5">
+      <Execution id="d88dc7e1-18b9-4535-85df-1d9128becc6c" />
+      <TestMethod codeBase="E:/ycg tool/ycg/Ycg.Test/bin/Debug/Ycg.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Ycg.Test.HttpHelperTest, Ycg.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DownloadFileTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="670b6a3c-16ba-9c67-b09b-8db4a65bf4f5" executionId="d88dc7e1-18b9-4535-85df-1d9128becc6c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d88dc7e1-18b9-4535-85df-1d9128becc6c" testId="670b6a3c-16ba-9c67-b09b-8db4a65bf4f5" testName="DownloadFileTest" computerName="TIM-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d88dc7e1-18b9-4535-85df-1d9128becc6c">
+    </UnitTestResult>
+  </Results>
+</TestRun>

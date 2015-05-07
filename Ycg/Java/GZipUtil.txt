@@ -1,0 +1,144 @@
+﻿package com.cocoon.upbaa.common;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+
+import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+
+public class GZipUtil {
+
+	public static void main(String[] args) throws IOException {
+		String data = "1111111111111111122222222222222222222222222222233333333333333333";
+		String compressData = GZipCompress(data);
+		System.out.println("A - " + compressData);
+		String decompressData = GZipDecompress(compressData);
+		System.out.println("B - " + decompressData);
+
+		String one = GetData();
+		System.out.println("C - " + GZipDecompress(one));
+	}
+
+	private static String GetData() throws IOException {
+		return FileUtil.readTextFile("C:/Users/Tim/Desktop/1.txt");
+	}
+
+	/**
+	 * GZip压缩数据(在字符串开头加上标记：1-压缩过 || 0-没压缩)
+	 * 
+	 * @param sourceValue
+	 * @return
+	 */
+	public static String GZipCompress(String sourceValue) {
+		if (sourceValue == null || sourceValue.equals("")) {
+			return sourceValue;
+		}
+		return Compress(sourceValue);
+	}
+
+	/**
+	 * GZip压缩数据 - 字符串长度超过1000就进行压缩数据
+	 * @param sourceValue
+	 * @return
+	 */
+	private static String Compress(String sourceValue) {
+		if (sourceValue.length() >= 1000) {
+			ByteOutputStream outputStream = null;
+			GZIPOutputStream gzipOutputStream = null;
+			try {
+				outputStream = new ByteOutputStream();
+				gzipOutputStream = new GZIPOutputStream(outputStream);
+				gzipOutputStream.write(sourceValue.getBytes());
+			} catch (Exception exception) {
+				Util.logError(exception.getMessage());
+				Util.logError(exception.getStackTrace().toString());
+				return "";
+			} finally {
+				if (gzipOutputStream != null) {
+					try {
+						gzipOutputStream.close();
+					} catch (IOException e) {
+					}
+				}
+			}
+
+			//这里是为了解决：Unexpected end of ZLIB input stream。
+			//原因：原来是获得输出流的数据之前，需要将GZIP关闭。
+			@SuppressWarnings("deprecation")
+			byte[] dataBytes = outputStream.toByteArray();
+			return "1".concat(new sun.misc.BASE64Encoder().encodeBuffer(dataBytes));
+		} else {
+			return "0".concat(sourceValue);
+		}
+	}
+
+	/**
+	 * GZip解压缩 (检查字符串第一位：1-压缩过 || 0-没压缩)
+	 * 
+	 * @param sourceValue
+	 * @return
+	 */
+	public static String GZipDecompress(String sourceValue) {
+		if (sourceValue == null || sourceValue.equals("")) {
+			return sourceValue;
+		}
+
+		String firstChar = sourceValue.substring(0, 1);
+		String data = sourceValue.substring(1, sourceValue.length());
+		if (firstChar.equals("1")) {
+			return Decompress(data);
+		} else {
+			return data;
+		}
+	}
+
+	/**
+	 * GZip解压缩数据
+	 * @param sourceValue
+	 * @return
+	 */
+	private static String Decompress(String sourceValue) {
+		GZIPInputStream gzipInputStream = null;
+		ByteArrayInputStream inputStream = null;
+		ByteArrayOutputStream outputStream = null;
+		try {
+			byte[] base64Bytes = new sun.misc.BASE64Decoder().decodeBuffer(sourceValue);
+			outputStream = new ByteArrayOutputStream();
+			inputStream = new ByteArrayInputStream(base64Bytes);
+			gzipInputStream = new GZIPInputStream(inputStream);
+
+			int readLength;
+			byte[] buffer = new byte[1024];
+			while ((readLength = gzipInputStream.read(buffer)) > 0) {
+				outputStream.write(buffer, 0, readLength);
+			}
+			return outputStream.toString();
+		} catch (Exception e) {
+			Util.logError(e.getMessage());
+			Util.logError(e.getStackTrace().toString());
+			return "";
+		} finally {
+			if (gzipInputStream != null) {
+				try {
+					gzipInputStream.close();
+				} catch (IOException ioException) {
+				}
+			}
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException ioException) {
+				}
+			}
+			if (outputStream != null) {
+				try {
+					outputStream.close();
+				} catch (IOException ioException) {
+				}
+			}
+		}
+		}
+	}
+}

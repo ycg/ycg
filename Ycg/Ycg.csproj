@@ -108,15 +108,17 @@
     <Compile Include="Windows\WindowsConst.cs" />
     <Compile Include="Windows\WindowsMessage.cs" />
     <Compile Include="Windows\WindowsStruct.cs" />
+    <Compile Include="YLog\Logger.cs" />
+    <Compile Include="YLog\LogLevel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Java\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Log\Remark.txt" />
+    <Content Include="Java\DESCryptoUtil.txt" />
+    <Content Include="Java\GZipUtil.txt" />
+    <Content Include="YLog\Remark.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

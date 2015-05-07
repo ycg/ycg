@@ -6,3 +6,4 @@ E:\ycg tool\Ycg\Ycg\bin\Debug\System.Data.SQLite.dll
 E:\ycg tool\Ycg\Ycg\obj\x86\Debug\Ycg.dll
 E:\ycg tool\Ycg\Ycg\obj\x86\Debug\Ycg.pdb
 E:\ycg tool\Ycg\Ycg\bin\Debug\fastJSON.dll
+E:\ycg tool\ycg\Ycg\obj\x86\Debug\Ycg.csprojResolveAssemblyReference.cache

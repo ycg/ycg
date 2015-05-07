@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Ycg.Util
 {
-    public static class ObjectHelper
+    public static class ObjectHelper    
     {
         public static bool IsNull(this object obj)
         {
