@@ -108,14 +108,21 @@
     <Compile Include="Windows\WindowsConst.cs" />
     <Compile Include="Windows\WindowsMessage.cs" />
     <Compile Include="Windows\WindowsStruct.cs" />
+    <Compile Include="YLog\ILogger.cs" />
     <Compile Include="YLog\Logger.cs" />
+    <Compile Include="YLog\LoggerBase.cs" />
     <Compile Include="YLog\LogLevel.cs" />
+    <Compile Include="YLog\Target\DBLogger.cs" />
+    <Compile Include="YLog\Target\EmailLogger.cs" />
+    <Compile Include="YLog\Target\TextLogger.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\MySQL\MySQLRemark.txt" />
+    <Content Include="Ioc\IocRemark.txt" />
     <Content Include="Java\DESCryptoUtil.txt" />
     <Content Include="Java\GZipUtil.txt" />
     <Content Include="YLog\Remark.txt" />
