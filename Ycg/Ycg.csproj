@@ -81,6 +81,7 @@
     <Compile Include="Extension\DataRowExtension.cs" />
     <Compile Include="Extension\DataTableExtension.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\DelegateList.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Extension\ValueTypeExtension.cs" />
     <Compile Include="Hook\CustomKeyBoard.cs" />
